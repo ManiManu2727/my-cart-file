@@ -6,9 +6,13 @@ pipeline {
     stages {
         stage ('Build'){
             steps {
-                echo "*********Sleeping for 60 seconds*********"
-                sleep 60
-            }
+                // i will wait for only 5 seconds
+                timeout (time: 5, uint: 'SECOND'){
+                    // my code will take 60 seconds to exucute
+                    echo "*********Sleeping for 60 seconds*********"
+                    sleep 60   
+                }
+            } 
         }
     }
 }
